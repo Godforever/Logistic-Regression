@@ -6,3 +6,7 @@
 
 3.其中main.py是对机器学习实战中的数据集以及一个高斯分布数据集的处理，包括四种方法的处理结果。而irisMain.py则是对iris数据集的处理。
   最终结果以混淆矩阵展示预测结果。
+  
+  示例：
+  ![image](https://github.com/Godforever/images/blob/master/logistic%20regression%E7%A4%BA%E4%BE%8B(1).png)
+  ![image](https://github.com/Godforever/images/blob/master/logistic%20regression%E7%A4%BA%E4%BE%8B(2).png)
