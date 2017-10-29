@@ -4,13 +4,23 @@ import method.GradientDescent as GD
 import method.Newton as NT
 
 def loadDataSet():
-
     dataMat = []
     labelMat = []
     fr = open('dataSet.txt')
     for line in fr.readlines():
         lineArr = line.strip().split()
         dataMat.append([1.0, float(lineArr[0]), float(lineArr[1])])#获取数据并添加常数项1，便于计算
+        labelMat.append(int(lineArr[2]))#获取数据标签
+    return dataMat, labelMat
+
+def loadDataSet1():
+
+    dataMat = []
+    labelMat = []
+    fr = open('ex4x.txt')
+    for line in fr.readlines():
+        lineArr = line.strip().split(',')
+        dataMat.append([1.0, float(lineArr[0])/20, float(lineArr[1])/20])#获取数据并添加常数项1，便于计算
         labelMat.append(int(lineArr[2]))#获取数据标签
     return dataMat, labelMat
 
@@ -29,7 +39,7 @@ def plotBestFit( dataMat, labelMat, w):
     ax = fig.add_subplot(111)
     ax.scatter(xcord1, ycord1, s=30, c='red', marker='s')
     ax.scatter(xcord2, ycord2, s=30, c='green')
-    x = np.arange(-4.0, 4.0, 0.1)
+    x = np.arange(min(xcord1+xcord2),max(xcord1+xcord2), 0.1)
     y = (-w[0] - w[1] * x) / w[2]
     ax.plot(x, y)
     plt.title('Logistic Regression')
@@ -37,10 +47,13 @@ def plotBestFit( dataMat, labelMat, w):
     plt.ylabel('X2');
     plt.show()
 
-
-dataArr, labelMat = loadDataSet()
+#读取机器学习实战数据集
+#dataArr, labelMat = loadDataSet()
+#读取高斯分布数据集
+dataArr, labelMat = loadDataSet1()
 
 w = GD.GradientDescent(dataArr, labelMat)
+dataArr, labelMat = loadDataSet()
 plotBestFit(dataArr, labelMat,w.getA())
 
 w_regular = GD.GradientDescentRegular(dataArr, labelMat)

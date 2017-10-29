@@ -25,7 +25,7 @@ irisTrainDataArr, irisTrainLabel = loadIrisDataSet("iristrain.data")
 irisTestDataArr, irisTestLabel = loadIrisDataSet("iristest.data")
 
 #采用梯度下降进行训练
-w_Iris = GD.GradientDescent(irisTrainDataArr, irisTrainLabel)
+w_Iris = GD.GradientDescentRegular(irisTrainDataArr, irisTrainLabel)
 
 dataMat = np.mat(irisTestDataArr)
 Z = np.array(dataMat*w_Iris)
